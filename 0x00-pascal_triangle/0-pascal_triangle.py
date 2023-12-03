@@ -7,9 +7,12 @@ def pascal_triangle(n):
     '''Creates a list of lists of integers representing
     the Pascal's triangle of a given integer.
     '''
+    triangle = []
     if type(n) is not int or n <= 0:
         return triangle
-    for number in range(n):
-        row = 11 ** number
-        number_list = list(map(int, str(row)))
-        return number_list
+    for i in range(num_rows):
+        row = [1] * (i + 1)
+        for j in range(1, i):
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+        triangle.append(row)
+    return triangle
